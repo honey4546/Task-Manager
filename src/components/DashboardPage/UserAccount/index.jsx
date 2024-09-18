@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "./UserAccount.styles.css";
-import userImg from "../../../assets/images/userImg.png";
+import userImg from "../../../assets/images/userimg.jpeg";
 import { Link } from "react-router-dom";
 import { FetchedContext } from "../../../App";
 
@@ -12,7 +12,7 @@ const UserAccount = () => {
       <div className="user-image">
         <img src={userImg} alt="" />
       </div>
-      <div className="user-profile-name">Hi, Ashis</div>
+      <div className="user-profile-name">Hi,Honey</div>
       <div className="notification-container">
         <div className="notification-heading">Notifications</div>
         <div className="notification-box">

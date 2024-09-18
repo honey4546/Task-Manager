@@ -23,6 +23,12 @@ const AddTaskBox = ({ taskBox, setTaskBox }) => {
 
   const addTask = async (e) => {
     e.preventDefault();
+
+    if (taskDate < formattedToday) {
+      notify("Task date cannot be in the past!", "error");
+      return; // Stop the function if the validation fails
+    }
+    
     fetch("https://jsonplaceholder.typicode.com/posts", {
       method: "POST",
       body: JSON.stringify({

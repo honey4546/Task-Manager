@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import "./Navbar.styles.css";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
+
 const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false);
+  const navigate = useNavigate();
+
   return (
     <nav>
       {/* logo */}
       <div className="logo">
-        todo<span>List</span>
+        Task<span>Manager</span>
       </div>
       <div
         className="hamburger"
@@ -38,9 +41,7 @@ const Navbar = () => {
             <Link className="nav-list-item-ham" to="/about">
               About
             </Link>
-            <Link className="nav-list-item-ham" to="https://github.com/WebGuyAshis">
-              Contact
-            </Link>
+            
           </div>
         </div>
       )}
@@ -56,14 +57,16 @@ const Navbar = () => {
         <Link className="nav-list-item" to="/about">
           About
         </Link>
-        <Link className="nav-list-item" to="https://github.com/WebGuyAshis">
-          Contact
-        </Link>
+       
       </div>
 
       <div className="auth-btn">
-        <div className="sign-up">Sign Up</div>
-        <div className="sign-in">Sign In</div>
+        <div className="sign-up" onClick={() => navigate("/signup")}>
+          Sign Up
+        </div>
+        <div className="sign-in" onClick={() => navigate("/signin")}>
+          Sign In
+        </div>
       </div>
     </nav>
   );

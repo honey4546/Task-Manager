@@ -18,6 +18,7 @@ const EditBox = (props) => {
   // Editing Task and Updating
   const editTask = (e) => {
     e.preventDefault();
+   
 
     fetch(`https://jsonplaceholder.typicode.com/posts/1`, {
       method: "PUT",

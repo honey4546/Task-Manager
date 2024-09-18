@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "./DashNav.styles.css";
-import userImg from "../../../assets/images/userImg.png";
+import userImg from "../../../assets/images/userimg.jpeg";
 import { DashContext } from "..";
 import { FetchedContext } from "../../../App";
 
@@ -18,7 +18,7 @@ const DashNav = () => {
   return (
     <div className="dash-nav">
       <div className="dash-logo">
-        <span>t</span>odoList
+        <span>Task</span>Manager
       </div>
       {/* Dash/Tasks Toggler */}
       <div className="dash-tasks-togg">
@@ -41,7 +41,7 @@ const DashNav = () => {
         <div className="user-img">
         <img className="user-img" src={userImg} alt="" />
         </div>
-        <span className="user-name">Hi, Ashis</span>
+        <span className="user-name">Hi, Honey</span>
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div className="home-page">
       {/* Navbar */}
-      <Navbar />
+      <Navbar/>
       {/* Welcome Text */}
       <div className="home-page-content">
         <div className="wel-text">
@@ -17,7 +17,7 @@ const Home = () => {
             <span> Daily Tasks</span>
           </h1>
           <div className="wel-quote">
-            "You are never too old to set another goal or to dream a new dream."
+            " Fix your inputs & then the outputs will automatically fix themeselves :) "
           </div>
           <div className="responsive-img">
             
