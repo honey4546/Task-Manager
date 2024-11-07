@@ -3,11 +3,12 @@ import "./DashNav.styles.css";
 import userImg from "../../../assets/images/userimg.jpeg";
 import { DashContext } from "..";
 import { FetchedContext } from "../../../App";
-
+import { useAuth0 } from "@auth0/auth0-react";
 const DashNav = () => {
 
   const {isDash, setIsDash} = useContext(DashContext);
   const {openUserAccount, setOpenUserAccount} = useContext(FetchedContext);
+  const { user, isAuthenticated, isLoading } = useAuth0();
 
   const dashClick = ()=>{
     setIsDash(true)
@@ -41,7 +42,10 @@ const DashNav = () => {
         <div className="user-img">
         <img className="user-img" src={userImg} alt="" />
         </div>
-        <span className="user-name">Hi, Honey</span>
+        {
+          isAuthenticated &&
+        <span className="user-name">Hi,{user.name}</span>
+        }
       </div>
     </div>
   );

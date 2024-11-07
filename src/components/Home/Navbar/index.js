@@ -1,13 +1,25 @@
-import React, { useState } from "react";
-import "./Navbar.styles.css";
-import { Link,useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-
+import { useAuth0 } from "@auth0/auth0-react";
+import "./Navbar.styles.css";
 
 const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false);
+  const { loginWithRedirect, isAuthenticated, isLoading } = useAuth0();
   const navigate = useNavigate();
+
+  // Redirect authenticated user to the dashboard
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/dashboard");
+    }
+  }, [isAuthenticated, navigate]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <nav>
@@ -23,6 +35,7 @@ const Navbar = () => {
       >
         <FontAwesomeIcon icon={faBars} />
       </div>
+
       {/* Dialogue box Nav List */}
       {navOpen && (
         <div
@@ -41,7 +54,6 @@ const Navbar = () => {
             <Link className="nav-list-item-ham" to="/about">
               About
             </Link>
-            
           </div>
         </div>
       )}
@@ -51,22 +63,20 @@ const Navbar = () => {
         <Link className="nav-list-item" to="/">
           Home
         </Link>
-        <Link className="nav-list-item" to="/dashboard">
+        {/* <Link className="nav-list-item" to="/dashboard">
           Dashboard
-        </Link>
+        </Link> */}
         <Link className="nav-list-item" to="/about">
           About
         </Link>
-       
       </div>
 
       <div className="auth-btn">
-        <div className="sign-up" onClick={() => navigate("/signup")}>
-          Sign Up
-        </div>
-        <div className="sign-in" onClick={() => navigate("/signin")}>
-          Sign In
-        </div>
+        {!isAuthenticated && (
+          <button className="signIn-btn" onClick={() => loginWithRedirect()}>
+            Sign In
+          </button>
+        )}
       </div>
     </nav>
   );

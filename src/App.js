@@ -3,12 +3,17 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import DashboardPage from "./components/DashboardPage";
 import React from "react";
+
+import { Auth0Provider } from '@auth0/auth0-react';
 // For Notifications
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // minified version is also included
 import "react-toastify/dist/ReactToastify.min.css";
 import About from "./components/About";
+
+import PrivateRoute from "./components/PrivateRoute";
+// import Form from "./components/Form"; // Adjust this based on the actual file pathz
 
 const FetchedContext = createContext();
 
@@ -81,6 +86,16 @@ function App() {
     }
   return (
     // Using Context API for data transfer
+
+    <Auth0Provider
+    domain="dev-d4u2gfxqyhg4cb11.us.auth0.com"
+    clientId="JOh9J3owLjszb7ls8l30GDGq2JNt81Kg"
+    authorizationParams={{
+      redirect_uri: window.location.origin
+    }}
+  >
+
+ 
     <FetchedContext.Provider
       value={{
         tasks,
@@ -97,6 +112,8 @@ function App() {
       }}
     >
       <div className="App">
+
+       
       <ToastContainer />
         {/* <Home/> */}
         <Router>
@@ -104,11 +121,21 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/about" element={<About/>}/>
+            <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <DashboardPage />
+            </PrivateRoute>
+          }
+        />
           </Routes>
         </Router>
+
  
       </div>
     </FetchedContext.Provider>
+    </Auth0Provider>
   );
 }
 

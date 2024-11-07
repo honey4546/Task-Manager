@@ -2,8 +2,10 @@ import React from "react";
 import "./Home.styles.css";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Home = () => {
+  const { loginWithRedirect, isAuthenticated, isLoading } = useAuth0();
   return (
     <div className="home-page">
       {/* Navbar */}
@@ -22,7 +24,7 @@ const Home = () => {
           <div className="responsive-img">
             
           </div>
-          <Link className="sign-up-btn" to='/dashboard'>Get Started</Link>
+          <Link className="sign-up-btn" onClick={() => loginWithRedirect()}>Get Started</Link>
 
         </div>
         {/* Home Page Img */}

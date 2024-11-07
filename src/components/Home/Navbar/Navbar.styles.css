@@ -109,3 +109,13 @@ nav{
    }
    .hamburger{display: block;}
 }
+
+.signIn-btn{
+    background-color: red;
+    color:white;
+    font-size: 15px;
+    font-weight: 400;
+    width:90px;
+    height:50px;
+    border-radius: 15px;
+}
