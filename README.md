@@ -20,10 +20,15 @@ Notifications:
 5)React Toastify: Notifications to keep users informed about actions like task updates, login success, or errors.
 
 
-Technologies
+Technologies:-
+
 React: For creating a dynamic and responsive UI.
+
 Auth0: For secure and easy user authentication.
+
 React-Toastify: To provide smooth and interactive notification alerts.
+
 Data Visualization: Pie chart for tracking task progress.
+
 Real-time Dashboard: Keeps users updated about their tasks instantly.
 
