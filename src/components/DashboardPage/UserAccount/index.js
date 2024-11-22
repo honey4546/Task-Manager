@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./UserAccount.styles.css";
 import userImg from "../../../assets/images/userimg.jpeg";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { FetchedContext } from "../../../App";
 import { useAuth0 } from "@auth0/auth0-react";
 
