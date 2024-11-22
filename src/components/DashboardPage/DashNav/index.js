@@ -8,7 +8,7 @@ const DashNav = () => {
 
   const {isDash, setIsDash} = useContext(DashContext);
   const {openUserAccount, setOpenUserAccount} = useContext(FetchedContext);
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
 
   const dashClick = ()=>{
     setIsDash(true)
